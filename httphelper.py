@@ -8,7 +8,7 @@ from http_parser.pyparser import HttpParser
 class HttpHelperCommand(sublime_plugin.TextCommand):
 	def _output(self, content, content_type="text/plain"):
 		# Determine response content-type, and set syntax if we can
-		ct = content_type.lower()
+		ct = content_type.lower().split(';')[0]
 		xml_formats = [ "text/xml", \
 		"application/atom+xml", \
 		"application/rss+xml", \
