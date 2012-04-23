@@ -1,5 +1,5 @@
 import sublime, sublime_plugin
-import socket, re
+import socket, re, json
 
 from http_parser.http import HttpStream
 from http_parser.reader import StringReader
@@ -22,6 +22,8 @@ class HttpHelperCommand(sublime_plugin.TextCommand):
 			syntax = "Packages/HTML/HTML.tmLanguage"
 		elif ct == "application/json":
 			syntax = "Packages/JavaScript/JSON.tmLanguage"
+			obj = json.loads(content)
+			content = json.dumps(content, sort_keys=True, indent=2)
 		elif ct == "text/css":
 			syntax = "Packages/CSS/CSS.tmLanguage"
 		elif ct in js_formats:
