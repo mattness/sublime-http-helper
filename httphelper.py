@@ -23,7 +23,7 @@ class HttpHelperCommand(sublime_plugin.TextCommand):
 		elif ct == "application/json":
 			syntax = "Packages/JavaScript/JSON.tmLanguage"
 			obj = json.loads(content)
-			content = json.dumps(content, sort_keys=True, indent=2)
+			content = json.dumps(obj, sort_keys=True, indent=2)
 		elif ct == "text/css":
 			syntax = "Packages/CSS/CSS.tmLanguage"
 		elif ct in js_formats:
